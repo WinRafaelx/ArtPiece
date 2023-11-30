@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 
 function blobToBase64(blob) {
   return new Promise((resolve, _) => {
@@ -24,7 +24,7 @@ async function query(data) {
   return result;
 }
 
-function App() {
+function Create() {
   const name = useRef("");
   const prompt = useRef("");
 
@@ -65,4 +65,4 @@ function App() {
   );
 }
 
-export default App;
+export default Create;

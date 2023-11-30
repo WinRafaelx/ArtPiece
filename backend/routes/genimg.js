@@ -32,7 +32,6 @@ router.post('/', async (req, res) => {
       } else {
         const url = result.secure_url
         console.log(url)
-        // res.send(url)
 
         const newImg = new ourmodel({
           name,
