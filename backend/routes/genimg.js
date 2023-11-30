@@ -47,4 +47,9 @@ router.post('/', async (req, res) => {
     });
 })
 
+router.get("/", async (req, res) => {
+  const allImg = await ourmodel.find()
+  res.send(allImg)
+})
+
 export default router;
