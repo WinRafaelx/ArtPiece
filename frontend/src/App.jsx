@@ -2,7 +2,7 @@ import "./App.css";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 
-function blobToBase64(blob: Blob) {
+function blobToBase64(blob) {
   return new Promise((resolve, _) => {
     const reader = new FileReader();
     reader.onloadend = () => resolve(reader.result);
@@ -10,17 +10,19 @@ function blobToBase64(blob: Blob) {
   });
 }
 
-async function query(data: any) {
-	const response = await fetch(
-		"https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5",
-		{
-			headers: { Authorization: "Bearer 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" },
-			method: "POST",
-			body: JSON.stringify(data),
-		}
-	);
-	const result = await response.blob();
-	return result;
+async function query(data) {
+  const response = await fetch(
+    "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5",
+    {
+      headers: {
+        Authorization: "Bearer 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",
+      },
+      method: "POST",
+      body: JSON.stringify(data),
+    }
+  );
+  const result = await response.blob();
+  return result;
 }
 
 function App() {
@@ -29,12 +31,12 @@ function App() {
 
   const genImage = async () => {
     console.log(name.current.value, prompt.current.value);
-    if(name.current.value === "" || prompt.current.value === "") {
+    if (name.current.value === "" || prompt.current.value === "") {
       alert("Please fill all the fields");
       return;
     }
 
-    const res = await query({"inputs": prompt.current.value})
+    const res = await query({ inputs: prompt.current.value });
     console.log(res);
 
     await blobToBase64(res)
@@ -44,7 +46,7 @@ function App() {
           img: res,
           prompt: prompt.current.value,
         });
-        console.log(result)
+        console.log(result);
         name.current.value = "";
         prompt.current.value = "";
       })
@@ -53,13 +55,13 @@ function App() {
 
   return (
     <div>
-        <label>Name:</label>
-        <input ref={name} type="text" required name="name" />
-        <br />
-        <label>Prompt:</label>
-        <input ref={prompt} type="text" required name="Prompt" />
-        <br />
-        <button onClick={genImage}>Gen</button>
+      <label>Name:</label>
+      <input ref={name} type="text" required name="name" />
+      <br />
+      <label>Prompt:</label>
+      <input ref={prompt} type="text" required name="Prompt" />
+      <br />
+      <button onClick={genImage}>Gen</button>
     </div>
   );
 }
