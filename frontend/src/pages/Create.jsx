@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 function blobToBase64(blob) {
   return new Promise((resolve, _) => {
@@ -27,30 +27,17 @@ async function query(data) {
 function Create() {
   const name = useRef("");
   const prompt = useRef("");
+  const [loading, setLoading] = useState(false);
 
   const genImage = async () => {
-    console.log(name.current.value, prompt.current.value);
-    if (name.current.value === "" || prompt.current.value === "") {
-      alert("Please fill all the fields");
-      return;
-    }
-
-    const res = await query({ inputs: prompt.current.value });
-    console.log(res);
-
-    await blobToBase64(res)
-      .then(async (res) => {
-        const result = await axios.post("http://localhost:5000/genimg/", {
-          name: name.current.value,
-          img: res,
-          prompt: prompt.current.value,
-        });
-        console.log(result);
-        name.current.value = "";
-        prompt.current.value = "";
-      })
-      .catch((err) => console.log(err));
+    let Name = name.current, Prompt = prompt.current;
+    console.log(Name, Prompt);
+    // if (Name === "" 
   };
+
+  if (loading) {
+    return <p>Generating...</p>;
+  }
 
   return (
     <div>
