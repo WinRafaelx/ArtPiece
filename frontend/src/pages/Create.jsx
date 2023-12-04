@@ -49,7 +49,7 @@ function Create() {
       
       await blobToBase64(res)
       .then(async (res) => {
-        const result = await axios.post("http://localhost:5000/genimg/", {
+        const result = await axios.post("http://localhost:8000/genimg/", {
           name: Name,
           img: res,
           prompt: Prompt,

@@ -3,6 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Container from "@mui/material/Container";
+import Navbar from "./components/Navbar.jsx";
+import CssBaseline from '@mui/material/CssBaseline';
+
 
 function srcset(image, size, rows = 1, cols = 1) {
   return {
@@ -25,7 +28,7 @@ function App() {
 
   const fetchImg = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/genimg");
+      const res = await axios.get("http://localhost:8000/genimg");
       const data = await res.data;
       setImg(data);
       for (let i = 0; i < img.length; i++) {
@@ -48,22 +51,26 @@ function App() {
     return <p>No data available</p>;
   } else {
     return (
-      <Container>
+      <>
+        <CssBaseline />
+        <Navbar />
+        <Container>
         <ImageList cols={4} variant="quilted">
           {img.map((item, index) => (
             <ImageListItem
-              key={item._id}
-
+            key={item._id}
+            cols={1 || 1} rows={1 || 1}
             >
               <img
-                {...srcset(item.url, 121, size[index][0], size[index][1])}
+                {...srcset(item.url, 121, 2, 2)}
                 alt={item.name}
                 loading="lazy"
-              />
+                />
             </ImageListItem>
           ))}
         </ImageList>
-      </Container>
+          </Container>
+      </>
     );
   }
 }

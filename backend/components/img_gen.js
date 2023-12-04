@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 async function connectDbGen() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/genimg').then(()=> console.log('Connected to MongoDB'))
+  await mongoose.connect('mongodb://127.0.0.1:27017/GenImg').then(()=> console.log('Connected to MongoDB'))
 }
 
 const userSchema = new mongoose.Schema({
@@ -10,6 +10,6 @@ const userSchema = new mongoose.Schema({
   url: String,
 })
 
-const ourmodel = mongoose.model("img", userSchema);
+const ourmodel = mongoose.model("Img", userSchema);
 
 export {connectDbGen, ourmodel}

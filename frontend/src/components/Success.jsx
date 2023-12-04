@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Success(props) {
+
+  const refreshPage = () => {
+    window.location.reload(false);
+  }
   console.log(props)
   return (
     <>
@@ -9,7 +13,7 @@ function Success(props) {
       <div>Success</div>
       <Link to="/">Home</Link>
       <br />
-      <Link to="/create">Create New Iamge</Link>
+      <Link onClick={refreshPage}>Create New Iamge</Link>
     </>
   )
 }
