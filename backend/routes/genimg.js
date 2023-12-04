@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
           prompt,
           url
         })
-        await newImg.save().then(() => res.send("Complete add new image"))
+        await newImg.save().then(() => res.send(url))
           .catch((err) => {
             res.send(err)
           })
