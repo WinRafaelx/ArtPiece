@@ -8,15 +8,8 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Button, createTheme, ThemeProvider, colors } from "@mui/material";
-
-const theme = createTheme({
-  palette: {
-    secondary: {
-        main: colors.orange[700],
-    },
-  },
-});
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -61,41 +54,62 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const gotoCreate = () => {
+    navigate("/create");
+  }
+
+  const gotoHome = () => {
+    navigate("/");
+  }
+
   return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="success">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-            >
-              GenImage
-            </Typography>
-            <Button sx={{ color: "secondary.main" }}>Secondary</Button>
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
-          </Toolbar>
-        </AppBar>
-      </Box>
-    </ThemeProvider>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" sx={{ bgcolor: "dark" }}>
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, fontWeight: "bold", cursor: "pointer" }}
+            onClick={gotoHome}
+          >
+            GenImage
+          </Typography>
+          <Button
+            variant="outlined"
+            sx={{
+              display: { xs: "none", sm: "block" },
+              color: "orange",
+              borderColor: "orange",
+              fontWeight: "bold",
+            }}
+            color="warning"
+            onClick={gotoCreate}
+          >
+            Gen Image
+          </Button>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }

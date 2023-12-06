@@ -4,8 +4,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Container from "@mui/material/Container";
 import Navbar from "./components/Navbar.jsx";
-import CssBaseline from '@mui/material/CssBaseline';
-
+import { Box } from "@mui/material";
 
 function srcset(image, size, rows = 1, cols = 1) {
   return {
@@ -51,26 +50,30 @@ function App() {
     return <p>No data available</p>;
   } else {
     return (
-      <>
-        <CssBaseline />
+      <Box>
         <Navbar />
         <Container>
-        <ImageList cols={4} variant="quilted">
-          {img.map((item, index) => (
-            <ImageListItem
-            key={item._id}
-            cols={1 || 1} rows={1 || 1}
-            >
-              <img
-                {...srcset(item.url, 121, 2, 2)}
-                alt={item.name}
-                loading="lazy"
+          <ImageList cols={4} variant="quilted">
+            {img.map((item, index) => (
+              <ImageListItem
+                key={item._id}
+                cols={1 || 1}
+                rows={1 || 1}
+                sx={{ p: 1 }}
+              >
+                <img
+                  {...srcset(item.url, 121, 2, 2)}
+                  alt={item.name}
+                  loading="lazy"
+                  style={{
+                    borderRadius: "5px",
+                  }}
                 />
-            </ImageListItem>
-          ))}
-        </ImageList>
-          </Container>
-      </>
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </Container>
+      </Box>
     );
   }
 }
