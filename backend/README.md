@@ -1,12 +1,12 @@
 # ArtPiece (Backend)
 
-After you clone this git for back-end section you can use this command to install all dependencies.
+- After you clone this git for back-end section you can use this command to install all dependencies.
 
 ```
   npm install
 ```
 
-Before that you have to create .env file like these 
+- Before that you have to create .env file like these 
 
 ```
 // You can get it from Cloundinary after you have signed in.
@@ -20,7 +20,7 @@ HUG_API= ''
 
 And you have to config database connection with mongoDB in ./components/img_gen.js to connect your local database.
 
-And start runing with
+- And start runing with
 
 ```
   npm run dev
