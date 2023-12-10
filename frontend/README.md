@@ -1,8 +1,5 @@
-# React + Vite
+#ArtPiece
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project will be about website that generate image from your text prompt. I have used stabilityai/stable-diffusion-2-1 API from Hugging face Inference API to create image. 
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This website will have 3 pages include Main Page to show all image, Form to generate image page, and the page after generate image. 
