@@ -6,8 +6,9 @@ This project will be about website that generate image from your text prompt. I 
 
 This waebsite will have 3 pages include Main Page to show all image, Form to generate image page, and the page after generate image. 
 
+* Installation for each front & Backend you can read more in their folder readme file
 
-# Illustration for each page
+## Illustration for each page
 <!-- Create a table with 2 rows and 2 columns -->
 <table>
   <tr>
